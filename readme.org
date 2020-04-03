@@ -1,5 +1,5 @@
-Visualización simple de series de tiempo casos confirmados de covid19 en Bolivia.
-Los datos son recuperados de la [[https://boliviasegura.gob.bo/][página oficial]] del gobierno de Bolivia y ordenados en series de tiempo en [[https://github.com/mauforonda/covid19-bolivia/\][este repositorio]]. 
+Visualización simple de series de tiempo para casos confirmados de covid19 en Bolivia.
+Los datos son recuperados de la [[https://boliviasegura.gob.bo/][página oficial]] del gobierno de Bolivia y ordenados en series de tiempo en [[https://github.com/mauforonda/covid19-bolivia][este repositorio]]. 
 
 Puedes verlo en línea [[https://mauforonda.github.io/covid19-bo/][acá]]
 
