@@ -1,0 +1,239 @@
+@font-face {
+  font-family: "Archia";
+  src: url("fonts/archia-medium-webfont.80da55a5.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Archia";
+  src: url("fonts/archia-semibold-webfont.890ee929.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Archia";
+  src: url("fonts/archia-bold-webfont.ad8463d1.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 900;
+}
+
+body{
+  margin:0;
+  height: 100%;
+  background-color: white;
+}
+
+.graph {
+  display:flex;
+  font-family: archia;
+  padding: 50px 0px 100px 0px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: #fafafb;
+  /*! border-top: 1px solid #d1d0d594; */
+}
+
+.metrics{
+  /* width:400px; */
+  margin: 0 30px 30px 0px;
+  padding: 30px;
+  border: 1px solid #e3dfdf;
+  border-radius: 20px;
+  box-shadow: 0 1px 6px 0 rgba(32,33,36,.1);
+  background: white;
+  max-width: 200px;
+  /*! text-align: center; */
+}
+
+.metric_name{
+  color:#343a40;
+  font-size:24px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.metric_name{
+  font-size:15px;
+  font-weight:900;
+  text-transform:uppercase;
+  color:#212122;
+}
+
+
+.timeseries{
+  position: relative;
+  display: flex;
+  width: auto;
+  align-self: center;
+  background: rgb(242, 242, 249);
+  border-radius: 20px;
+  /*! height: 200px; */
+  border: 1px solid #d1cfd980;
+  max-width: 800px;
+}
+
+.stats {
+  padding: 1rem;
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  width: 12rem;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+h5 {
+  color: rgb(153, 147, 170);
+  margin:0;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.selected_date {
+  color: rgb(130, 114, 208);
+}
+
+h2{
+  color: rgb(130, 114, 208);
+  margin:0;
+  font-size: 13px;
+  padding: 2px;
+}
+
+.domain, .tick, line{
+  stroke:rgb(255, 255, 255);
+  stroke-width:2;
+}
+
+text{
+  font-family: "archia";
+  text-transform: uppercase;
+  color: rgb(153, 147, 170);
+  stroke: transparent;
+  font-size: 12px;
+}
+
+.day_label{
+  color: rgb(153, 147, 170);
+  text-transform: uppercase;
+}
+
+.selected_value {
+  padding: 10px 0px;
+}
+
+.selected-dot {
+  fill: rgb(130, 114, 208, .3);
+  stroke: rgb(130, 114, 208)
+}
+
+.metric_value {
+  font-weight: 900;
+  font-size: 45px;
+  color: #664ddb;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+svg {
+  height: auto;
+  min-height: 300px;
+}
+
+.timeseries-container {
+  max-width: 100%;
+}
+
+.footer{
+  background: white;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid #d1d0d594;
+}
+
+.footer-element {
+  text-align: center;
+  font-family: archia;
+  color: #9f9bb9;
+}
+
+.footer-element > a {
+  text-decoration: none;
+  color: #664ddb;
+}
+
+.header {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 900;
+  color: #212122;
+  font-family: archia;
+  text-align: center;
+  padding: 30px 0px;
+  background: #fff;
+  box-shadow: 0 1px 5px 0px rgba(75, 81, 111, 0.4);
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center
+}
+
+.header img{
+  height: 3rem;
+  width: 3rem;
+  padding: 5px;
+  align-self:center; 
+}
+
+.header span{
+  align-self:center; 
+}
+
+@media (max-width: 769px) {
+  .timeseries{
+    max-width: 100%;
+    margin: 10px;
+  }
+ 
+  h5{
+    font-size: 11px
+  }
+  h2{
+    font-size: 10px
+  }
+}
+
+@media (max-width: 1100px) {
+  
+  .graph{
+    padding: 10px 0px 20px 0px;
+  }
+  
+  .metrics{
+    max-width: 100%;
+    margin: 25px 10px;
+  }
+  .metric{
+    flex-direction: row
+  }
+  .metric_name{
+    align-self: center;
+    font-size: 1.2rem
+  }
+  .metric_value{
+    padding: 0px 10px;
+  }
+  
+}
+

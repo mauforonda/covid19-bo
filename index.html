@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script src="dependencies/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <img src="images/logo.png">
+      <span>Covid19 Bolivia</span>
+    </div>
+    <div class="graph">
+      <div class="metric-container">
+	<div class="metrics">
+	  <div class="metric">
+	    <span class="metric_value" id="total_confirmed"></span>
+	    <span class="metric_name"> Casos confirmados</span>
+	  </div>
+	  <div class="metric">
+	    <span class="metric_value" id="cfr"></span>
+	    <span class="metric_name">decesos por 100 casos confirmados</span>
+	  </div>
+	</div>
+      </div>
+      <div class="timeseries-container">
+	<div class="timeseries">
+	  <div class="stats">
+	    <h5>Confirmados</h5>
+	    <h5 class="selected_date"></h5>
+	    <div class="selected_value">
+	      <h2 class='dep la_paz'>
+		<span class="day_label">La Paz: </span><span class="day_value"></span>
+	      </h2>
+	      <h2 class='cochabamba'>
+		<span class="day_label">Cochabamba: </span><span class="day_value"></span>
+	      </h2>
+	      <h2 class='santa_cruz'>
+		<span class="day_label">Santa Cruz: </span><span class="day_value"></span>
+	      </h2>
+	      <h2 class='oruro'>
+		<span class="day_label">Oruro: </span><span class="day_value"></span>
+	      </h2>
+	      <h2 class='potosí'>
+		<span class="day_label">Potosí: </span><span class="day_value"></span>
+	      </h2>
+	      <h2 class='tarija'>
+		<span class="day_label">Tarija: </span><span class="day_value"></span>
+	      </h2>
+	      <h2 class='chuquisaca'>
+		<span class="day_label">Chuquisaca: </span><span class="day_value"></span>
+	      </h2>
+	      <h2 class='beni'>
+		<span class="day_label">Beni: </span><span class="day_value"></span>
+	      </h2>
+	      <h2 class='pando'>
+		<span class="day_label">Pando: </span><span class="day_value"></span>
+	      </h2>
+	    </div>
+	  </div>
+	  <svg width="800" height="480" viewBox="0 0 800 480" preserveAspectRatio="xMidYMax meet"/>
+	</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-element">
+	Hecho con ❤︎ por <a href="https://twitter.com/mauforonda/">@mauforonda</a>
+      </div>
+      <div class="footer-element">
+	Datos disponibles en <a href="https://github.com/mauforonda/covid19-bolivia/">github</a>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</hmtl>
