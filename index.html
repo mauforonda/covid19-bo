@@ -20,7 +20,20 @@
 	    <span class="metric_name"> Casos confirmados</span>
 	  </div>
 	  <div class="metric">
-	    <span class="metric_value" id="cfr"></span>
+	    <div id="cfr_box">
+	      <span class="metric_value" id="cfr"></span>
+	      <div class="ci">
+		<p>
+		  <span>entre </span>
+		  <span class="confidence" id="cfr_low"></span>
+		</p>
+		<p>
+		  <span> y </span>
+		  <span class="confidence" id="cfr_up"></span>
+		</p>
+	      </div>
+	      <a id="cfr-footnote-pointer" href="#cfr-footnote"> * </a>
+	    </div>
 	    <span class="metric_name">decesos por 100 casos confirmados</span>
 	  </div>
 	</div>
@@ -63,6 +76,10 @@
 	  <svg width="800" height="480" viewBox="0 0 800 480" preserveAspectRatio="xMidYMax meet"/>
 	</div>
       </div>
+    </div>
+    <div id="cfr-footnote">
+      <a href="#cfr-footnote-pointer">* </a>
+      <span class="footnote">Intérvalos de confianza a 95% estimados mediante Clopper-Pearson.</span>
     </div>
     <div class="footer">
       <div class="footer-element">

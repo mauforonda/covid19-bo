@@ -28,7 +28,7 @@ body{
 .graph {
   display:flex;
   font-family: archia;
-  padding: 50px 0px 100px 0px;
+  padding: 50px 0px 50px 0px;
   flex-wrap: wrap;
   justify-content: center;
   background: #fafafb;
@@ -214,26 +214,97 @@ svg {
   }
 }
 
+#cfr_box {
+  display: flex;
+  flex-direction: row;
+}
+
+.confidence {
+  color: #664ddb;
+  font-weight: 900;
+}
+
+.ci {
+  font-size: 12px;
+  padding-left: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ci p {
+  padding: 1px;
+  margin: 0;
+}
+
+.confidence {
+  color: #664ddb;
+  font-weight: 900;
+  font-size: 15px;
+}
+
+#cfr-footnote-pointer {
+  text-decoration: none;
+  padding: 10px 0px 0px 5px;
+  color: #ff1ad0;
+}
+
+#cfr-footnote a {
+  text-decoration: none;
+  color: #ff1ad0;
+}
+
+#cfr-footnote {
+  background: #fafafb;
+  text-align: center;
+  padding: 30px;
+  font-family: archia;
+  color: #9993aa;
+  font-size: 15px;
+}
+
 @media (max-width: 1100px) {
   
   .graph{
     padding: 10px 0px 20px 0px;
   }
+
+  .metric-container {
+    max-width: 100%;
+  }
   
-  .metrics{
+  .metrics {
     max-width: 100%;
     margin: 25px 10px;
+    padding: 5px 7px;
   }
+  
   .metric{
     flex-direction: row
   }
   .metric_name{
     align-self: center;
-    font-size: 1.2rem
+    font-size: 1.1rem
   }
   .metric_value{
-    padding: 0px 10px;
+    padding: 0px 5px;
   }
+
+  #cfr_box {
+    text-align: center;
+  }
+
+  #cfr-footnote-pointer {
+    padding: 10px 10px 0px 5px;
+  }
+
+  .ci {
+    padding:0;
+  }
+
+  #cfr-footnote {
+    font-size: 11px;
+}
   
 }
 

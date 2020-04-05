@@ -1,3 +1,45 @@
+
+function clopperpearson(x,n) {
+  var vx = x
+  var vN = n
+  var vP = vx/vN
+  if(vx==0)
+  { low = 0.00 } else
+  { var v=vP/2; vsL=0; vsH=vP; var p=2.5/100
+    while((vsH-vsL)>1e-5) { if(BinP(vN,v,vx,vN)>p) { vsH=v; v=(vsL+v)/2 } else { vsL=v; v=(v+vsH)/2 } }
+    low = 100 * v }
+  if(vx==vN)
+  { up = 1.00 } else
+  { var v=(1+vP)/2; vsL=vP; vsH=1; var p=2.5/100
+    while((vsH-vsL)>1e-5) { if(BinP(vN,v,0,vx)<p) { vsH=v; v=(vsL+v)/2 } else { vsL=v; v=(v+vsH)/2 } }
+    up = 100 * v }
+  return [low.toFixed(2),up.toFixed(2)]
+}
+
+function BinP(N,p,x1,x2) {
+  var q=p/(1-p); var k=0; var v = 1; var s=0; var tot=0
+  while(k<=N) {
+    tot=tot+v
+    if(k>=x1 & k<=x2) { s=s+v }
+    if(tot>1e30){s=s/1e30; tot=tot/1e30; v=v/1e30}
+    k=k+1; v=v*q*(N+1-k)/k
+  }
+  return s/tot
+}
+
+
+function BinP(N,p,x1,x2) {
+  var q=p/(1-p); var k=0; var v = 1; var s=0; var tot=0
+  while(k<=N) {
+    tot=tot+v
+    if(k>=x1 & k<=x2) { s=s+v }
+    if(tot>1e30){s=s/1e30; tot=tot/1e30; v=v/1e30}
+    k=k+1; v=v*q*(N+1-k)/k
+  }
+  return s/tot
+}
+
+
 function graph(response_data){
 
   function prepare_data(parameter) {
@@ -27,7 +69,11 @@ function graph(response_data){
     d3.select('#total_confirmed')
       .html(total_confirmados[day['fecha']])
     d3.select('#cfr')
-      .html(cfr[day['fecha']].toFixed(2))
+      .html(cfr[day['fecha']][0]);
+    d3.select('#cfr_low')
+      .html(cfr[day['fecha']][1][0]);
+    d3.select('#cfr_up')
+      .html(cfr[day['fecha']][1][1]);
     d3.select('.selected_date')
       .html(new Date(day['fecha']).toLocaleDateString('es-BO', dateformat))
     d3.selectAll(`.${dateclass}`)
@@ -59,7 +105,11 @@ function graph(response_data){
   cfr = {}
   decesos = prepare_data('decesos');
   decesos.forEach((day) => {
-    cfr[day['fecha']] = Object.values(day['dep']).reduce((a, b) => a + b) / total_confirmados[day['fecha']] * 100
+    decesos_dia = Object.values(day['dep']).reduce((a, b) => a + b);
+    confirmados_dia = total_confirmados[day['fecha']]
+    cfr_dia = 100 * (decesos_dia / confirmados_dia)
+    ci = clopperpearson(decesos_dia, confirmados_dia)
+    cfr[day['fecha']] = [cfr_dia.toFixed(2), ci]
   });
   set_locale()
   const margin = {top: 30, right: 20, bottom: 20, left: 30};
