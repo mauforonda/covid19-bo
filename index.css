@@ -28,22 +28,22 @@ body{
 .graph {
   display:flex;
   font-family: archia;
-  padding: 50px 0px 50px 0px;
+  padding: 50px 0px 30px 0px;
   flex-wrap: wrap;
   justify-content: center;
-  background: #fafafb;
+  background: #f5f5f7;
   /*! border-top: 1px solid #d1d0d594; */
 }
 
 .metrics{
   /* width:400px; */
   margin: 0 30px 30px 0px;
-  padding: 30px;
+  padding: 10px;
   border: 1px solid #e3dfdf;
   border-radius: 20px;
   box-shadow: 0 1px 6px 0 rgba(32,33,36,.1);
   background: white;
-  max-width: 200px;
+  max-width: 230px;
   /*! text-align: center; */
 }
 
@@ -61,16 +61,15 @@ body{
   color:#212122;
 }
 
-
 .timeseries{
   position: relative;
   display: flex;
   width: auto;
   align-self: center;
-  background: rgb(242, 242, 249);
+  background: white;
   border-radius: 20px;
   /*! height: 200px; */
-  border: 1px solid #d1cfd980;
+  border: 1px solid #ad9cec80;
   max-width: 800px;
 }
 
@@ -94,19 +93,25 @@ h5 {
 }
 
 .selected_date {
-  color: rgb(130, 114, 208);
+  color: rgb(102, 77, 219);
 }
 
 h2{
-  color: rgb(130, 114, 208);
+  color: rgb(102, 77, 219);
   margin:0;
   font-size: 13px;
   padding: 2px;
 }
 
 .domain, .tick, line{
-  stroke:rgb(255, 255, 255);
   stroke-width:2;
+}
+.domain {
+  stroke: #ccc9d445;
+}
+
+line {
+  stroke: #9993aa;
 }
 
 text{
@@ -140,7 +145,10 @@ text{
 .metric {
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  padding: 10px;
+  background: #f2f1f78c;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 svg {
@@ -202,9 +210,10 @@ svg {
   align-self:center; 
 }
 
-#cfr_box {
+.metric_value_box {
   display: flex;
   flex-direction: row;
+  padding-bottom: 3px;
 }
 
 .confidence {
@@ -228,30 +237,45 @@ svg {
 .confidence {
   color: #664ddb;
   font-weight: 900;
-  font-size: 15px;
+  font-size: 12px;
 }
 
-#cfr-footnote-pointer {
+.footnote-pointer {
   text-decoration: none;
-  padding: 10px 0px 0px 5px;
-  color: #ff1ad0;
+  padding: 10px 8px 0px 5px;
+  color: #ee669f;
+  font-size: 10px;
+  font-weight: 900;
 }
 
-#cfr-footnote a {
-  text-decoration: none;
-  color: #ff1ad0;
+.footnote-number {
+  padding: 0 5px;
+  color: #ee669f;
+  font-weight: 900;
 }
 
-#cfr-footnote {
-  background: #fafafb;
-  text-align: center;
-  padding: 30px;
+.footnotes {
+  background: transparent;
+  text-align: left;
   font-family: archia;
   color: #9993aa;
-  font-size: 15px;
+  font-size: 12px;
+  padding: 60px 10px 0px 10px;
 }
 
-@media (max-width: 769px) {
+.footnote {
+  padding: 5px 0px;
+}
+
+@media (max-width: 500px) {
+  
+  .metric-container {
+    max-width: 100% !important;
+  }
+  .metric_value{
+    font-size: 35px !important;;
+  }
+  
   .ci p {
     padding: 0px;
     line-height: 1.2;
@@ -272,6 +296,7 @@ svg {
   h2{
     font-size: 10px
   }
+  
 }
 
 @media (max-width: 1100px) {
@@ -281,7 +306,7 @@ svg {
   }
 
   .metric-container {
-    max-width: 100%;
+    max-width: 390px;
   }
   
   .metrics {
@@ -295,27 +320,33 @@ svg {
   }
   .metric_name{
     align-self: center;
-    font-size: 1.1rem
+    font-size: 0.95rem;
+    margin-left: auto;
+    text-align: right;
   }
   .metric_value{
     padding: 0px 5px;
+    font-size: 40px;
+    align-self: center;
   }
 
-  #cfr_box {
+  .metric_value_box {
     text-align: center;
   }
 
-  #cfr-footnote-pointer {
-    padding: 10px 10px 0px 5px;
+  .footnote-pointer {
+    padding: 10px 8px 0px 0px !important;
   }
 
   .ci {
     padding:0;
+    min-width: 70px;
   }
 
-  #cfr-footnote {
-    font-size: 11px;
-}
+  .footnotes {
+    font-size: 12px;
+    padding: 30px 10px 0px 10px;
+  }
   
 }
 

@@ -16,11 +16,13 @@
       <div class="metric-container">
 	<div class="metrics">
 	  <div class="metric">
-	    <span class="metric_value" id="total_confirmed"></span>
+	    <div class="metric_value_box">
+	      <span class="metric_value" id="total_confirmed"></span>
+	    </div>
 	    <span class="metric_name"> Casos confirmados</span>
 	  </div>
 	  <div class="metric">
-	    <div id="cfr_box">
+	    <div class="metric_value_box">
 	      <span class="metric_value" id="cfr"></span>
 	      <div class="ci">
 		<p>
@@ -32,12 +34,15 @@
 		  <span class="confidence" id="cfr_up"></span>
 		</p>
 	      </div>
-	      <a id="cfr-footnote-pointer" href="#cfr-footnote"> * </a>
+	      <span class="footnote-pointer">1</span>
 	    </div>
 	    <span class="metric_name">decesos por 100 casos confirmados</span>
 	  </div>
 	  <div class="metric">
-	    <span class="metric_value" id="tests_per_confirmed"></span>
+	    <div class="metric_value_box">
+	      <span class="metric_value" id="tests_per_confirmed"></span>
+	      <span class="footnote-pointer">2</span>
+	    </div>
 	    <span class="metric_name"> Pruebas por 1 caso confirmado</span>
 	  </div>
 	</div>
@@ -79,12 +84,19 @@
 	    </div>
 	  </div>
 	</div>
+	
+	<div class="footnotes">
+	  <div class="footnote">
+	    <span class="footnote-number">1 </span><span>Intérvalos de confianza a 95% estimados mediante Clopper-Pearson.</span>
+	  </div>
+	  <div class="footnote">
+	    <span class="footnote-number">2 </span><span>Asumiendo que el total de pruebas realizadas es igual al número de casos confirmados + cosos descartados.</span>
+	  </div>
+	</div>
+	
       </div>
     </div>
-    <div id="cfr-footnote">
-      <a href="#cfr-footnote-pointer">* </a>
-      <span class="footnote">Intérvalos de confianza a 95% estimados mediante Clopper-Pearson.</span>
-    </div>
+    
     <div class="footer">
       <div class="footer-element">
 	Hecho con ❤︎ por <a href="https://twitter.com/mauforonda/">@mauforonda</a>
@@ -93,6 +105,7 @@
 	Datos disponibles en <a href="https://github.com/mauforonda/covid19-bolivia/">github</a>
       </div>
     </div>
+    
     <script src="index.js"></script>
   </body>
 </hmtl>

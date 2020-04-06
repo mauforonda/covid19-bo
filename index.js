@@ -74,6 +74,8 @@ function graph(response_data){
       .html(cfr[day['fecha']][1][0]);
     metrics['confidence_high']
       .html(cfr[day['fecha']][1][1]);
+    metrics['test_per_confirmed']
+      .html(test_por_confirmado[day['fecha']])
     metrics['date']
       .html(new Date(day['fecha']).toLocaleDateString('es-BO', dateformat))
     d3.selectAll(`.${dateclass}`)
@@ -82,8 +84,8 @@ function graph(response_data){
       .attr('stroke', 'rgb(130, 114, 208)')
     d3.selectAll(`circle:not(.${dateclass})`)
       .attr('r', 3)
-      .attr('fill', 'rgb(153, 147, 170, .3)')
-      .attr('stroke', 'rgb(153, 147, 170)')
+      .attr('fill', 'rgb(102, 77, 219, 0.3)')
+      .attr('stroke', 'rgb(102, 77, 219)')
     Object.keys(day['dep']).forEach((departamento) => {
       d3.select(`.selected_value .${departamento} .day_value`).html(day['dep'][departamento]);
     })
@@ -113,6 +115,15 @@ function graph(response_data){
     cfr[day['fecha']] = [cfr_dia.toFixed(2), ci]
   });
 
+  descartados = prepare_data('descartados');
+  total_descartados = {}
+  descartados.forEach((day) => {
+    total_descartados[day['fecha']] = Object.values(day['dep']).reduce((a, b) => a + b)
+  });
+  test_por_confirmado = {}
+  Object.keys(total_descartados).forEach((day) => {
+    test_por_confirmado[day] = ((total_confirmados[day] + total_descartados[day]) / total_confirmados[day]).toFixed(2)
+  })
   
   set_locale()
   const margin = {top: 30, right: 20, bottom: 20, left: 30};
@@ -139,6 +150,7 @@ function graph(response_data){
 		 'cfr': d3.select('#cfr'),
 		 'confidence_low': d3.select('#cfr_low'),
 		 'confidence_high': d3.select('#cfr_up'),
+		 'test_per_confirmed': d3.select('#tests_per_confirmed'),
 		 'date': d3.select('.selected_date')}
   
   svg.append('g')
@@ -154,7 +166,7 @@ function graph(response_data){
     svg.append('path')
       .datum(confirmados)
       .attr('fill', 'none')
-      .attr('stroke', 'rgb(153, 147, 170)')
+      .attr('stroke', 'rgb(102, 77, 219, 0.3)')
       .attr('stroke-width', 2)
       .attr('class', departamento)
       .attr('cursor', 'pointer')
@@ -170,14 +182,14 @@ function graph(response_data){
       .on('mouseover', (d) => {
 	d3.select(d3.event.target)
 	  .attr('stroke-width', 4)
-	  .attr('stroke', 'rgb(130, 114, 208)')
+	  .attr('stroke', '#664ddb')
 	dep = d3.select(d3.event.target).node().classList[0]
-	d3.select(`h2.${dep} .day_label`).style('color', 'rgb(130, 114, 208)')
+	d3.select(`h2.${dep} .day_label`).style('color', '#664ddb')
       })
       .on('mouseout', (d) => {
 	d3.select(d3.event.target)
 	  .attr('stroke-width', 2)
-	  .attr('stroke', 'rgb(153, 147, 170)')
+	  .attr('stroke', 'rgb(102, 77, 219, 0.3)')
 	dep = d3.select(d3.event.target).node().classList[0]
 	d3.select(`h2.${dep} .day_label`).style('color', 'rgb(153, 147, 170)')
       })
@@ -188,8 +200,8 @@ function graph(response_data){
       .attr('class', function(d) {
 	dateclass = new Date(d['fecha'])
 	return 'd' + dateclass.toLocaleDateString('es-US').replace(/\//g, '')})
-      .attr('fill', 'rgb(153, 147, 170, .3)')
-      .attr('stroke', 'rgb(153, 147, 170)')
+      .attr('fill', 'rgb(102, 77, 219, 0.3)')
+      .attr('stroke', 'rgb(102, 77, 219)')
       .attr('r', 3)
       .attr('cursor', 'pointer')
       .attr('cx', function(d) {
