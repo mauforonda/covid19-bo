@@ -66,15 +66,15 @@ function graph(response_data){
     const dateformat = { month: 'long', day: 'numeric' };
     let dateclass = new Date(day['fecha'])
     dateclass = 'd' + dateclass.toLocaleDateString('es-US').replace(/\//g, '')
-    d3.select('#total_confirmed')
+    metrics['confirmed']
       .html(total_confirmados[day['fecha']])
-    d3.select('#cfr')
+    metrics['cfr']
       .html(cfr[day['fecha']][0]);
-    d3.select('#cfr_low')
+    metrics['confidence_low']
       .html(cfr[day['fecha']][1][0]);
-    d3.select('#cfr_up')
+    metrics['confidence_high']
       .html(cfr[day['fecha']][1][1]);
-    d3.select('.selected_date')
+    metrics['date']
       .html(new Date(day['fecha']).toLocaleDateString('es-BO', dateformat))
     d3.selectAll(`.${dateclass}`)
       .attr('r', 8)
@@ -102,6 +102,7 @@ function graph(response_data){
   confirmados.forEach((day) => {
     total_confirmados[day['fecha']] = Object.values(day['dep']).reduce((a, b) => a + b)
   })
+  
   cfr = {}
   decesos = prepare_data('decesos');
   decesos.forEach((day) => {
@@ -111,6 +112,8 @@ function graph(response_data){
     ci = clopperpearson(decesos_dia, confirmados_dia)
     cfr[day['fecha']] = [cfr_dia.toFixed(2), ci]
   });
+
+  
   set_locale()
   const margin = {top: 30, right: 20, bottom: 20, left: 30};
   const width = 800 - margin.left - margin.right;
@@ -131,6 +134,12 @@ function graph(response_data){
         .scaleLinear()
         .domain([0, confirmados.length -1])
         .range([margin.left, width]);
+  
+  let metrics = {'confirmed': d3.select('#total_confirmed'),
+		 'cfr': d3.select('#cfr'),
+		 'confidence_low': d3.select('#cfr_low'),
+		 'confidence_high': d3.select('#cfr_up'),
+		 'date': d3.select('.selected_date')}
   
   svg.append('g')
     .attr('transform', 'translate(0,' + height + ')')
@@ -190,10 +199,10 @@ function graph(response_data){
   	return y(d['dep'][departamento]);
       });
     svg
-      .on('mousemove', mousemove)
       .on('touchmove', mousemove)
+      .on('mousemove', mousemove)
   })
-  
+
   set_label(confirmados[confirmados.length-1])
 
 };

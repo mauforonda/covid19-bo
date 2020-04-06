@@ -75,6 +75,7 @@ body{
 }
 
 .stats {
+  z-index:0;
   padding: 1rem;
   position: absolute;
   top: .5rem;
@@ -143,6 +144,7 @@ text{
 }
 
 svg {
+  z-index:1;
   height: auto;
   min-height: 300px;
 }
@@ -200,20 +202,6 @@ svg {
   align-self:center; 
 }
 
-@media (max-width: 769px) {
-  .timeseries{
-    max-width: 100%;
-    margin: 10px;
-  }
- 
-  h5{
-    font-size: 11px
-  }
-  h2{
-    font-size: 10px
-  }
-}
-
 #cfr_box {
   display: flex;
   flex-direction: row;
@@ -261,6 +249,29 @@ svg {
   font-family: archia;
   color: #9993aa;
   font-size: 15px;
+}
+
+@media (max-width: 769px) {
+  .ci p {
+    padding: 0px;
+    line-height: 1.2;
+  }
+  
+  .ci {
+    font-size: 9px;
+  }
+  
+  .timeseries{
+    max-width: 100%;
+    margin: 10px;
+  }
+ 
+  h5{
+    font-size: 11px
+  }
+  h2{
+    font-size: 10px
+  }
 }
 
 @media (max-width: 1100px) {
